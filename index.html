@@ -1,542 +1,531 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Pragati sable, portfolio, Pragati, full stack dev, personal portfolio lifecodes, portfolio design, portfolio website, personal portfolio" />
-    <meta name="description" content="Welcome to Pragati's Portfolio. Full-Stack Web Developer and Android App Developer" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://kit.fontawesome.com/95a2002ecf.js" crossorigin="anonymous"></script>
-    <!-- Favicon -->
-    <link id='favicon' rel="shortcut icon" href="./assets/images/favicon.jpg" type="image/x-png">
-    <title>Portfolio | CodeWithTanveer</title>
+    <title>Portfolio - Nama Kamu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            justify-self: end;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            border: 5px solid rgba(255,255,255,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transition: left 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            left: 0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--gradient);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-<header>
-        <a href="/" class="logo"><i class="fa-solid fa-code"></i> CodeWithTanveer</a>
-
-        <div id="menu" class="fas fa-bars"></div>
-        <nav class="navbar">
-            <ul>
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#experience">Experience</a></li>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-        </nav>
-</header>
-<!-- navbar ends -->
+        </div>
+    </nav>
 
-
-<!-- hero section starts -->
-<section class="home" id="home">
-    <div id="particles-js"></div>
-
-    <div class="content">
-    <h2>Hi There,<br/> I'm Tanveer Ahmad <span></span></h2>
-    <p>i am into <span class="typing-text"></span></p>
-    <a href="#about" class="btn"><span>About Me</span>
-      <i class="fas fa-arrow-circle-down"></i>
-    </a>
-    <div class="socials">
-        <ul class="social-icons">
-          <li><a class="facebook" aria-label="Facebook" href="https://www.facebook.com/people/Code-With-Tanveer/100090088137923/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-          <li><a class="instagram" aria-label="Instagram" href="https://www.instagram.com/codewithtanveer/"><i class="fab fa-instagram" target="_blank"></i></a></li>
-          <li><a class="linkedin" aria-label="LinkedIn" href="https://www.linkedin.com/in/tanveer-ahmad-934155227?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a></li> 
-          <li><a class="twitter" aria-label="twitter" href="https://twitter.com/ansaritanveer09?t=djOjp9Qx9fn4MNXnPF96Pw&s=09" target="_blank"><i class="fab fa-twitter"></i></a></li> 
-          <li><a class="github" aria-label="GitHub" href="https://github.com/CodeWithTanveer" target="_blank"><i class="fab fa-github"></i></a></li>
-          <li><a class="dev" aria-label="Dev" href="https://www.youtube.com/channel/UCUHWQr2ACeR2lSMXABALxHw" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
-        </ul>
-      </div>
-    </div>
-<div class="image">
-    <img draggable="false" class="tilt" src="./assets/images/personal.jpg" alt="" height="">
-</div>
-</section>
-<!-- hero section ends -->
-
-
-<!-- about section starts -->
-<section class="about" id="about">
-    <h2 class="heading"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
-    
-    <div class="row">
-
-    <div class="image">
-        <img draggable="false" class="tilt" src="./assets/images/profile1.png" alt="">
-    </div>
-    <div class="content">
-        <h3>I'm Tanveer Ahmad</h3>
-        <span class="tag">Software Developer</span>
-        
-        <p>I am a Software Developer based in Bhadohi, India. 
-          I am very passionate about improving my coding skills & developing applications & websites.
-          I build WebApps and Websites using MERN Stack.
-          Working for myself to improve my skills.
-          Love to build Full-Stack clones. </p>
-        
-        <div class="box-container">
-            <div class="box">
-              <p><span> age: </span> 22</p>
-              <p><span> phone : </span> +91 XXX-XXX-XXXX</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text fade-in">
+                <h1>Halo, Saya <span style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Developer</span></h1>
+                <p class="subtitle">Saya menciptakan pengalaman digital yang luar biasa dengan kode yang bersih dan modern.</p>
+                <a href="#projects" class="cta-button">Lihat Proyek Saya</a>
             </div>
-            <div class="box">
-              <p><span> email : </span> tanveeransaribcom@gmail.com</p>
-              <p><span> place : </span> Uttar Pardesh, India</p>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Profile" class="profile-img">
             </div>
         </div>
-        
-        <div class="resumebtn">
-            <a href="#" target="_blank" class="btn"><span>Resume</span>
-                <i class="fas fa-chevron-right"></i>
-            </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <h2 class="section-title fade-in">Tentang Saya</h2>
+        <div class="about-content">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About" class="about-image fade-in">
+            <div class="about-text fade-in">
+                <h3>Selamat datang di dunia digital saya!</h3>
+                <p>Saya adalah Front-end Developer dengan passion dalam menciptakan interface yang user-friendly dan performa tinggi. Dengan pengalaman 3+ tahun di industri, saya spesialisasi dalam:</p>
+                <div class="skills">
+                    <span class="skill-tag">HTML5 & CSS3</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">Node.js</span>
+                </div>
+            </div>
         </div>
+    </section>
 
-    </div>
-    </div>
-</section>
-<!-- about section ends -->
-
-<!-- skills section starts -->
-<section class="skills" id="skills">
-
-    <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
-
-    <div class="container">
-          <div class="row" id="skillsContainer">
-
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/TailwindCSS.png"/>
-                <span>TailwindCSS</span>
-              </div>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title fade-in">Proyek Terbaik</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <h3 class="project-title">E-Commerce Platform</h3>
+                <div class="project-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                </div>
+                <p>Platform e-commerce modern dengan fitur checkout seamless dan dashboard admin lengkap.</p>
             </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/icons8-react-100.png" height="50" width="50">
-                <span>ReactJS</span>
-              </div>
+            <div class="project-card fade-in">
+                <h3 class="project-title">Task Management App</h3>
+                <div class="project-tech">
+                    <span class="tech-tag">Vue.js</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Tailwind</span>
+                </div>
+                <p>Aplikasi manajemen tugas dengan real-time collaboration dan drag & drop interface.</p>
             </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/figma.png" height="50" width="50">
-                <span>Figma</span>
-              </div>
+            <div class="project-card fade-in">
+                <h3 class="project-title">Portfolio Website</h3>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML/CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">GSAP</span>
+                </div>
+                <p>Website portfolio responsif dengan animasi smooth dan performa optimal.</p>
             </div>
-            <div class="bar">
-              <div class="info">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"height="50" width="50" viewBox="0 0 48 48">
-                  <linearGradient id="SNASnMitCxQrIYk4GDibta_v8RpPQUwv0N8_gr1" x1="18.208" x2="34.159" y1="2.413" y2="46.236" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f09701"></stop><stop offset="1" stop-color="#e36001"></stop></linearGradient><path fill="url(#SNASnMitCxQrIYk4GDibta_v8RpPQUwv0N8_gr1)" d="M7.192,7.176l2.627,29.77c0.109,1.237,0.97,2.28,2.164,2.621l10.643,3.041	c0.898,0.257,1.849,0.257,2.747,0l10.643-3.041c1.194-0.341,2.055-1.383,2.164-2.621l2.627-29.77C40.911,6.006,39.99,5,38.816,5	H9.184C8.01,5,7.089,6.006,7.192,7.176z"></path><path fill="#f09601" d="M24,8v31.9l9.876-2.822c0.797-0.228,1.371-0.924,1.443-1.749l2.286-26.242	C37.656,8.502,37.196,8,36.609,8H24z"></path><path fill="#fff" d="M24,25v-4h8.6l-0.7,11.5L24,35.1v-4.2l4.1-1.4l0.3-4.5L24,25z M32.9,17l0.3-4H24v4H32.9z"></path><path fill="#d6e0e9" d="M24,30.9v4.2l-7.9-2.6L15.7,27h4l0.2,2.5L24,30.9z M19.1,17H24v-4h-9.1l0.7,12H24v-4h-4.6L19.1,17z"></path><path d="M33.2,13l-0.3,4H24h-4.9l0.3,4H24h8.6l-0.7,11.5L24,35.1l-7.9-2.6L15.7,27h4l0.2,2.5l4.1,1.4l4.1-1.4l0.3-4.5H24h-8.4 l-0.7-12H24H33.2 M34.278,12H33.2H24h-9.1h-1.06l0.062,1.058l0.7,12L14.657,26h-0.032l0.078,1.073l0.4,5.5l0.049,0.668 l0.636,0.209l7.9,2.6L24,36.153l0.313-0.103l7.9-2.6l0.644-0.212l0.041-0.677l0.7-11.5L33.663,20H32.6H24h-3.672l-0.15-2H24h8.9 h0.928l0.069-0.925l0.3-4L34.278,12L34.278,12z M20.623,26H24h3.331l-0.185,2.769L24,29.843l-3.156-1.077l-0.148-1.846L20.623,26 L20.623,26z" opacity=".05"></path><path d="M33.2,13l-0.3,4H24h-4.9l0.3,4H24h8.6l-0.7,11.5L24,35.1l-7.9-2.6L15.7,27h4l0.2,2.5l4.1,1.4l4.1-1.4l0.3-4.5H24h-8.4 l-0.7-12H24H33.2 M33.739,12.5H33.2H24h-9.1h-0.53l0.031,0.529l0.7,12l0.027,0.471H15.6H24h3.866l-0.242,3.634L24,30.372 l-3.628-1.239l-0.174-2.173l-0.037-0.46H19.7h-4h-0.538l0.039,0.536l0.4,5.5l0.024,0.334l0.318,0.105l7.9,2.6L24,35.626 l0.156-0.051l7.9-2.6l0.322-0.106l0.021-0.339l0.7-11.5l0.032-0.53H32.6H24h-4.136l-0.225-3H24h8.9h0.464l0.035-0.463l0.3-4 L33.739,12.5L33.739,12.5z" opacity=".07"></path>
-                  </svg>
-                <span>HTML5</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/javascript.png" height="50" width="50">
-                <span>JavaScript</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/java.png" height="50" width="50">
-                <span>Java</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/bootstrap.png" height="50" width="50">
-                <span>Bootstrap</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/python.png" height="50" width="50">
-                <span>Python</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/github.png" height="50" width="50">
-                <span>GitHub</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/firebase.png" height="50" width="50">
-                <span>Firebase</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/nodejs.png" height="50" width="50">
-                <span>NodeJS</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/aws.png" height="50" width="50">
-                <span>AWS</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/sql.png" height="50" width="50">
-                <span>SQL</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/mongodb.png" height="50" width="50">
-                <span>MongoDB</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/php.png" height="50" width="50">
-                <span>PHP</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/spring-boot.png" height="50" width="50">
-                <span>Spring Boot</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/ruby.png" height="50" width="50">
-                <span>Ruby</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/go.png" height="50" width="50">
-                <span>GO</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/C++.png" height="50" width="50">
-                <span>C++</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/C.png" height="50" width="50">
-                <span>C</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/css.png" height="50" width="50">
-                <span>CSS</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/digitalocean.png" height="50" width="50">
-                <span>DigitalOcean</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/azure.png" height="50" width="50">
-                <span>Azure</span>
-              </div>
-            </div>
-            <div class="bar">
-              <div class="info">
-                <img src="./assets/images/skills/angular.png" height="50" width="50">
-                <span>Angular</span>
-              </div>
-            </div>
-
-      </div>
-</div>
-</section>
-<!-- skills section ends -->
-
-
-<!-- education section starts -->
-<section class="education" id="education">
-
-  <h1 class="heading"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h1>
-
-    <p class="qoute">Education is not the learning of facts, but the training of the mind to think.</p>
-
-    <div class="box-container">
-
-    <div class="box">
-        <div class="image">
-        <img draggable="false" src="./assets/images/educat/knpg.jpg" alt="">
         </div>
-        <div class="content">
-        <h3>B.Com. | M.Com.</h3>
-        <p>K.N. Gov. P.G. College Gyanpur Bhadohi 221304 U.P. </p>
-        <h4>2018-2023 | Completed</h4>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="contact-content">
+            <h2 class="section-title" style="color: var(--white);">Mari Berkolaborasi</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Siap untuk membawa ide Anda ke level berikutnya?</p>
+            <div class="contact-links">
+                <a href="mailto:hello@example.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+                <a href="https://linkedin.com" class="contact-link">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+                <a href="https://github.com" class="contact-link">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="https://wa.me/628123456789" class="contact-link">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="box">
-      <div class="image">
-      <img draggable="false" src="./assets/images/educat/masamad.jpg" alt="">
-      </div>
-      <div class="content">
-      <h3>High School</h3>
-      <p>M.A. Samad Inter College Bhadohi 221401 U.P.</p>
-      <h4>2014-2016 | Completed</h4>
-      </div>
-    </div>
-    <div class="box">
-      <div class="image">
-      <img draggable="false" src="./assets/images/educat/national.jpg" alt="">
-      </div>
-      <div class="content">
-      <h3>Intermediate</h3>
-      <p>Shri Indra Bahadur Singh National Inter College Bhadohi 221401 U.P.</p>
-      <h4>2016-2018 | Completed</h4>
-      </div>
-    </div>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
 
-</div>
-</section>
-<!-- education section ends -->
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
 
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-<!-- work project section starts -->
-<section class="work" id="work">
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-  <h2 class="heading"><i class="fas fa-laptop-code"></i> Projects <span>Made</span></h2>
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
 
-  <div class="box-container">
-
-    <div class="box tilt">
-      <img draggable="false" src="./assets/images/projects/portfolio.png" alt="" />
-      <div class="content">
-        <div class="tag">
-        <h3>Portfolio Website</h3>
-        </div>
-        <div class="desc">
-          <p>Personal portfolio website. Don't need much info about it, just scroll down. You're here only!</p>
-          <div class="btns">
-            <a href="#" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="#" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="box tilt">
-      <img draggable="false" src="./assets/images/projects/aicma.png" alt="" />
-      <div class="content">
-        <div class="tag">
-        <h3>AICMA Bhadohi</h3>
-        </div>
-        <div class="desc">
-          <p>AICMA Bhadohi</p>
-          <div class="btns">
-            <a href="https://aicma.co.in/" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="#" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="box tilt">
-      <img draggable="false" src="./assets/images/projects/moderntek.png" alt="" />
-      <div class="content">
-        <div class="tag">
-        <h3>Modern Tek</h3>
-        </div>
-        <div class="desc">
-          <p>Modern Tek IT Solution Company</p>
-          <div class="btns">
-            <a href="https://moderntek.co.in/" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="#" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="box tilt">
-      <img draggable="false" src="./assets/images/projects/deeniyat.png" alt="" />
-      <div class="content">
-        <div class="tag">
-        <h3>Deeniyat Rugs</h3>
-        </div>
-        <div class="desc">
-          <p>Deeniyat Rugs</p>
-          <div class="btns">
-            <a href="https://www.deeniyatrugs.com/" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="#" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="box tilt">
-      <img draggable="false" src="./assets/images/projects/ayub.png" alt="" />
-      <div class="content">
-        <div class="tag">
-        <h3>Ayub Rugs</h3>
-        </div>
-        <div class="desc">
-          <p>Ayub Rugs</p>
-          <div class="btns">
-            <a href="https://ayubrugs.com/" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="#" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-</div>
-
-</section>
-<!-- work project section ends -->
-
-<!-- experience section starts -->
-<section class="experience" id="experience">
-
-  <h2 class="heading"><i class="fas fa-briefcase"></i> Work Timeline </h2>
-
-  <div class="timeline">
-
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>Web Design</h2>
-        </div>
-        <div class="desc">
-            <p>Web design encompasses many different skills and disciplines in the production and maintenance of websites.</p>
-        </div>
-      </div>
-    </div>
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>Wesite Development</h2>
-        </div>
-        <div class="desc">
-            <p>Web development is the work involved in developing a website for the Internet or an intranet. Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>Software Development</h2>
-        </div>
-        <div class="desc">
-            <p>Software development is the process of designing, creating, testing, and maintaining different software applications.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>Android App Development</h2>
-        </div>
-        <div class="desc">
-            <p>Mobile application development is the process of making software for smartphones, tablets and digital assistants, most commonly for the Android and iOS operating systems.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>E-Commerce Solution</h2>
-        </div>
-        <div class="desc">
-            <p>E-commerce solutions refer to a set of software and technology tools that help businesses sell products and services online. </p>
-        </div>
-      </div>
-    </div>
-
-    
-</div>
-
-</section>
-<!-- experience section ends -->
-
-<!-- footer section starts -->
-<section class="footer">
-
-  <div class="box-container">
-
-      <div class="box">
-          <h3>Tanveer's Portfolio</h3>
-          <p>Thank you for visiting my personal portfolio website. Connect with me over socials. <br/> <br/> Keep Rising 🚀. Connect with me over live chat!</p>
-      </div>
-
-      <div class="box">
-          <h3>quick links</h3>
-          <a href="#home"><i class="fas fa-chevron-circle-right"></i> Home</a>
-          <a href="#about"><i class="fas fa-chevron-circle-right"></i> About</a>
-          <a href="#skills"><i class="fas fa-chevron-circle-right"></i> Skills</a>
-          <a href="#education"><i class="fas fa-chevron-circle-right"></i> Education</a>
-          <a href="#work"><i class="fas fa-chevron-circle-right"></i> Work</a>
-          <a href="#experience"><i class="fas fa-chevron-circle-right"></i> Experience</a>
-      </div>
-
-      <div class="box">
-          <h3>Contact info</h3>
-          <p> <i class="fas fa-phone"></i>+91 XXX-XXX-XXXX</p>
-          <p> <i class="fas fa-envelope"></i>tanveeransaribcom@gmail.com</p>
-          <p> <i class="fas fa-map-marked-alt"></i>Kashipur Bhadohi, India</p>
-          <div class="share">
-            <a class="facebook" aria-label="Facebook" href="https://www.facebook.com/people/Code-With-Tanveer/100090088137923/" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a class="instagram" aria-label="Instagram" href="https://www.instagram.com/codewithtanveer/"><i class="fab fa-instagram" target="_blank"></i></a>
-            <a class="linkedin" aria-label="LinkedIn" href="https://www.linkedin.com/in/tanveer-ahmad-934155227?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a> 
-            <a class="twitter" aria-label="twitter" href="https://twitter.com/ansaritanveer09?t=djOjp9Qx9fn4MNXnPF96Pw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a class="github" aria-label="GitHub" href="https://github.com/CodeWithTanveer" target="_blank"><i class="fab fa-github"></i></a>
-            <a class="dev" aria-label="Dev" href="https://www.youtube.com/channel/UCUHWQr2ACeR2lSMXABALxHw" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-          </div>
-      </div>
-  </div>
-
-  <h1 class="credit">Designed & Developed <i class="fa fa-heart pulse"></i> by <a href="https://codewithtanveer.blogspot.com/"> CodeWithTanveer</a></h1>
-
-</section>
-<!-- footer section ends -->
-
-
-<!-- scroll top btn -->
-<a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
-<!-- scroll back to top -->
-
-
-<!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
-<!-- jquery cdn -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<!-- typed.js cdn -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<!-- particle.js links -->
-<script src="./assets/js/particles.min.js"></script>
-<script src="./assets/js/app.js"></script>
-
-<!-- vanilla tilt.js links -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<!-- scroll reveal anim -->
-<script src="https://unpkg.com/scrollreveal"></script>
-
-<script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
-    ></script>
-
-<!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
-
-<script src="./assets/js/script.js"></script>
-
-</body>
-</html>
+        // Active nav link
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.query
